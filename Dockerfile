@@ -1,22 +1,18 @@
-# Python 3.10 official image
-FROM python:3.10-slim
+FROM python:3.11-slim
 
-# System update aur ffmpeg install (pytgcalls ke liye zaroori)
+# Install system dependencies and ffmpeg
 RUN apt-get update && \
-    apt-get install -y ffmpeg && \
+    apt-get install -y --no-install-recommends ffmpeg && \
     rm -rf /var/lib/apt/lists/*
 
-# Working directory set karo
 WORKDIR /app
 
-# Pehle sirf requirements.txt copy karo (caching ke liye)
+# Copy and install dependencies
 COPY requirements.txt .
-
-# Python dependencies install karo
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Baki saari files copy karo
+# Copy the rest of the application
 COPY . .
 
-# Bot run karo
+# Run the bot
 CMD ["python", "main.py"]
