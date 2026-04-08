@@ -1,6 +1,5 @@
 pyrogram>=2.0.0
-py-tgcalls==3.0.0.dev24
+py-tgcalls>=2.2.0,<3.0.0
 yt-dlp>=2024.0.0
 python-dotenv>=1.0.0
-motor>=3.0.0          # agar database use kar rahe ho
-spotipy>=2.22.0       # optional, Spotify ke liye
+spotipy>=2.22.0   # optional
